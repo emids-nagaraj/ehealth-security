@@ -45,27 +45,24 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
  
-//		open access to specific urls 
-		
+//		open access to specific urls  
 		http.cors().and().csrf().disable().authorizeRequests()
 				.antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll() 
 				.antMatchers(HttpMethod.POST, SIGN_IN_URL).permitAll()
 				.antMatchers(HttpMethod.GET, TEST_URL).permitAll()
-//				.antMatchers(HttpMethod.GET, SWAGGER_UI_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAG_API_DOC_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAG_CONFIG_UI_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAG_RESOURCE_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAG_SECURITY_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAG_UI_URL).permitAll()
+				.antMatchers(HttpMethod.GET, SWAG_JARS_URL).permitAll()
 				.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager(), userService))
-				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
-
-		/*
-		 * .antMatchers(HttpMethod.GET, GET_PLANS_URL).permitAll()
-		 * .antMatchers(HttpMethod.GET, GET_CUSTOM_PLANS_URL).permitAll()
-		 * .antMatchers(HttpMethod.POST,CREATE_SUBSCRIPTION).permitAll()
-		 * .antMatchers(HttpMethod.GET, REDIRECT_URL).permitAll()
-		 */ 
+				.addFilter(new JWTAuthorizationFilter(authenticationManager())); 
 		
 		// open all the endpoints/no security
 //		http.cors().and().csrf().disable().authorizeRequests().anyRequest().permitAll();
-		 	 
+		 
 	}
 
 	@Override
