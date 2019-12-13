@@ -13,6 +13,7 @@ public class EHealthConstants {
 	public static final String UPDATE_SUCCESS = "updated successfully";
 	public static final String DELETE_SUCCESS = "deleted successfully";
 	public static final String MAIL_SENT_SUCCESS = "email sent successfully";
+	public static final String AUTHENTICATED_SUCCESSFULLY = "authenticated successfully";
 	
 
 }

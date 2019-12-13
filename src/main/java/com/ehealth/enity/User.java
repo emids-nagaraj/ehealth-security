@@ -21,7 +21,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private int id; 
+	private int id;
 	@Column(name = "email")
 	private String email;
 	@Column(name = "first_name")
@@ -40,13 +40,9 @@ public class User implements Serializable {
 	@Column(name = "is_admin")
 	private Boolean isAdmin;
 
-	/*
-	 * @OneToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER) private Address
-	 * address1;
-	 */
+	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	private Address address1;
 
-	 
-  
 	public String getEmail() {
 		return email;
 	}
@@ -94,13 +90,14 @@ public class User implements Serializable {
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
- 
 
-	/*
-	 * public Address getAddress1() { return address1; }
-	 * 
-	 * public void setAddress1(Address address1) { this.address1 = address1; }
-	 */
+	public Address getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(Address address1) {
+		this.address1 = address1;
+	}
 
 	public LocalDateTime getCreatedOn() {
 		return createdOn;
